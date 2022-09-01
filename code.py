@@ -41,24 +41,11 @@ raw = angleSensor.raw_angle
 angle = angleSensor.angle
 print ("raw /angle: ", raw, angle)
 
-print ("zpos: ", angleSensor.zero_position)
-print ("mpos: ", angleSensor.max_position)
-print ("mang: ", angleSensor.max_angle)
-
+# Set the current raw angle as the zero position
 zpos = angleSensor.zero_position = raw
-mpos = angleSensor.max_position = raw +256
-print ("zpos: ", angleSensor.zero_position)
-print ("mpos: ", angleSensor.max_position)
-print ("mang: ", angleSensor.max_angle)
+# mpos = angleSensor.max_position = raw +256
 
-print ("raw /angle: ", angleSensor.raw_angle, angleSensor.angle)
-
-print ("zmco: ", angleSensor.zmco)
-print ("status: {:08b}".format(angleSensor.status))
-print ("agc: ", angleSensor.gain)
-
-hyst = angleSensor.hysteresis = AS5600.HYSTERESIS_3LSB
-print ("Hyst: ", hyst)
+angleSensor.hysteresis = AS5600.HYSTERESIS_3LSB
 
 time.sleep(5)
 while True:
