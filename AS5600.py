@@ -190,7 +190,7 @@ class AS5600:
     def zero_position(self, value: int) -> int:
         if not 0 <= value <= 4095:
             raise ValueError("Value must be between 0 & 4095")
-        return self._write_16(_REGISTER_ZPOS_HI, value)
+        self._write_16(_REGISTER_ZPOS_HI, value)
 
     @property
     def max_position(self) -> int:
@@ -201,7 +201,7 @@ class AS5600:
     def max_position(self, value: int) -> int:
         if not 0 <= value <= 4095:
             raise ValueError("Value must be between 0 & 4095")
-        return self._write_16(_REGISTER_MPOS_HI, value)
+        self._write_16(_REGISTER_MPOS_HI, value)
 
     @property
     def max_angle(self) -> int:
@@ -212,7 +212,7 @@ class AS5600:
     def max_angle(self, value: int) -> int:
         if not 0 <= value <= 4095:
             raise ValueError("Value must be between 0 & 4095")
-        return self._write_16(_REGISTER_MANG_HI, value)
+        self._write_16(_REGISTER_MANG_HI, value)
 
     @property
     def power_mode(self) -> int:
@@ -223,7 +223,7 @@ class AS5600:
     def power_mode(self, value: int) -> int:
         if not POWER_MODE_NOM <= value <= POWER_MODE_LPM3:
             raise ValueError(f"Power Mode (PM) value must be between {POWER_MODE_NOM} & {POWER_MODE_LPM3}")
-        return self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_PM, value)
+        self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_PM, value)
 
     @property
     def hysteresis(self) -> int:
@@ -234,7 +234,7 @@ class AS5600:
     def hysteresis(self, value: int) -> int:
         if not HYSTERESIS_OFF <= value <= HYSTERESIS_3LSB:
             raise ValueError(f"Hysteresis (HYST) value must be between {HYSTERESIS_OFF} & {HYSTERESIS_3LSB}")
-        return self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_HYST, value)
+        self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_HYST, value)
 
     @property
     def output_stage(self) -> int:
@@ -245,7 +245,7 @@ class AS5600:
     def output_stage(self, value: int) -> int:
         if not OUTPUT_STAGE_ANALOG_FULL <= value <= OUTPUT_STAGE_DIGITAL_PWM:
             raise ValueError(f"Output Stage (OUTS) value must be between{OUTPUT_STAGE_ANALOG_FULL} & {OUTPUT_STAGE_DIGITAL_PWM}")
-        return self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_OUTS, value)
+        self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_OUTS, value)
 
     @property
     def pwm_frequency(self) -> int:
@@ -256,7 +256,7 @@ class AS5600:
     def pwm_frequency(self, value: int) -> int:
         if not PWM_FREQUENCY_115HZ <= value <= PWM_FREQUENCY_920HZ:
             raise ValueError(f"PWM Frequency (PWMF) value must be between {PWM_FREQUENCY_115HZ} & {PWM_FREQUENCY_920HZ}")
-        return self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_PWMF, value)
+        self._write_conf_register(_REGISTER_CONF_LO, _2_BITS, _BIT_POS_PWMF, value)
 
     @property
     def slow_filter(self) -> int:
@@ -267,7 +267,7 @@ class AS5600:
     def slow_filter(self, value: int) -> int:
         if not SLOW_FILTER_16X <= value <= SLOW_FILTER_2X:
             raise ValueError(f"Slow  Filter (SF) value must be between {SLOW_FILTER_16X} & {SLOW_FILTER_2X}")
-        return self._write_conf_register(_REGISTER_CONF_HI, _2_BITS, _BIT_POS_SF, value)
+        self._write_conf_register(_REGISTER_CONF_HI, _2_BITS, _BIT_POS_SF, value)
 
     @property
     def fast_filter(self) -> int:
@@ -278,7 +278,7 @@ class AS5600:
     def fast_filter(self, value: int) -> int:
         if not FAST_FILTER_THRESHOLD_SLOW <= value <= FAST_FILTER_THRESHOLD_10LSB:
             raise ValueError(f"Fast  Filter (FTH) value must be between {FAST_FILTER_THRESHOLD_SLOW} & {FAST_FILTER_THRESHOLD_10LSB}")
-        return self._write_conf_register(_REGISTER_CONF_HI, _3_BITS, _BIT_POS_FTH, value)
+        self._write_conf_register(_REGISTER_CONF_HI, _3_BITS, _BIT_POS_FTH, value)
 
     @property
     def watch_dog(self) -> int:
@@ -289,7 +289,7 @@ class AS5600:
     def watch_dog(self, value: int) -> int:
         if not 0 <= value <= 1:
             raise ValueError("Watchdog (WD) value must be 0 or 1")
-        return self._write_conf_register(_REGISTER_CONF_HI, _1_BIT, _BIT_POS_WD, value)
+        self._write_conf_register(_REGISTER_CONF_HI, _1_BIT, _BIT_POS_WD, value)
 
     # Burn Commands
 
